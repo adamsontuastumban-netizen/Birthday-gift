@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Boiii </title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    background: linear-gradient(135deg, #ffd6e7, #fff0f7, #ffc1dc);
+    color: #9b3565;
+    overflow-x: hidden;
+  }
+  .hearts span {
+    position: fixed;
+    bottom: -40px;
+    font-size: 22px;
+    animation: float 7s linear infinite;
+    opacity: .75;
+    pointer-events: none;
+  }
+  .hearts span:nth-child(1){left:5%;animation-delay:0s}
+  .hearts span:nth-child(2){left:18%;animation-delay:1.5s}
+  .hearts span:nth-child(3){left:34%;animation-delay:3s}
+  .hearts span:nth-child(4){left:52%;animation-delay:.8s}
+  .hearts span:nth-child(5){left:70%;animation-delay:2.4s}
+  .hearts span:nth-child(6){left:88%;animation-delay:4s}
+  @keyframes float {
+    0% { transform: translateY(0) rotate(0deg); opacity:0; }
+    15% { opacity:.8; }
+    100% { transform: translateY(-110vh) rotate(25deg); opacity:0; }
+  }
+  .page {
+    width: min(92%, 720px);
+    margin: 0 auto;
+    padding: 42px 0 55px;
+    text-align: center;
+  }
+  .card {
+    background: rgba(255,255,255,.78);
+    border: 3px solid #ff9fc7;
+    border-radius: 30px;
+    padding: 28px 20px 35px;
+    box-shadow: 0 15px 45px rgba(173,67,112,.18);
+    backdrop-filter: blur(6px);
+  }
+  .flowers { font-size: 28px; letter-spacing: 7px; }
+  h1 {
+    margin: 15px 0 5px;
+    color: #e05291;
+    font-size: clamp(32px, 9vw, 64px);
+    line-height: 1.05;
+    text-shadow: 2px 3px 0 #ffd1e3;
+  }
+  .subtitle { font-size: 21px; color:#b64777; }
+  .teddies { font-size: 58px; margin: 18px 0; }
+  .message {
+    max-width: 600px;
+    margin: 22px auto 0;
+    padding: 22px;
+    border-radius: 22px;
+    background: #fff7fb;
+    border: 2px dashed #f48db8;
+    text-align: left;
+    line-height: 1.7;
+    font-size: 17px;
+  }
+  .message-title {
+    text-align:center;
+    font-weight:bold;
+    color:#d94384;
+    font-size:22px;
+    margin-bottom:12px;
+  }
+  .cursor {
+    display:inline-block;
+    width:2px;
+    height:1em;
+    background:#d94384;
+    vertical-align:-2px;
+    animation: blink .8s infinite;
+  }
+  @keyframes blink { 50%{opacity:0} }
+  .final {
+    margin-top: 24px;
+    font-size: 20px;
+    font-weight: bold;
+    color:#d94384;
+  }
+  .button {
+    border: none;
+    border-radius: 999px;
+    padding: 13px 22px;
+    margin-top: 18px;
+    background:#e85b99;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    box-shadow:0 7px 15px rgba(205,55,117,.2);
+  }
+  .button:hover { transform: translateY(-1px); }
+  .small { font-size:13px; opacity:.75; margin-top:15px; }
+
+  .cake-area {
+    margin: 18px auto 10px;
+    position: relative;
+    width: 240px;
+    height: 150px;
+  }
+  .cake {
+    position: absolute;
+    left: 50%;
+    bottom: 8px;
+    transform: translateX(-50%);
+    width: 190px;
+    height: 78px;
+    background: #ffd0df;
+    border: 3px solid #ee8fb5;
+    border-radius: 12px 12px 22px 22px;
+    box-shadow: inset 0 8px 0 #fff1f7;
+  }
+  .cake::before {
+    content: "🌸  🎂  🌸";
+    position: absolute;
+    top: 22px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+  }
+  .plate {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 220px;
+    height: 18px;
+    background: #f7a9c9;
+    border-radius: 50%;
+  }
+  .candle {
+    position: absolute;
+    bottom: 82px;
+    width: 10px;
+    height: 34px;
+    background: repeating-linear-gradient(45deg,#fff 0 6px,#f38bb5 6px 11px);
+    border-radius: 4px;
+  }
+  .candle:nth-child(1){left:85px}
+  .candle:nth-child(2){left:115px}
+  .candle:nth-child(3){left:145px}
+  .flame {
+    position:absolute;
+    bottom:115px;
+    font-size:20px;
+    animation:flicker .7s infinite alternate;
+  }
+  .flame:nth-child(4){left:81px}
+  .flame:nth-child(5){left:111px}
+  .flame:nth-child(6){left:141px}
+  @keyframes flicker {
+    from { transform:scale(.9) translateY(2px); }
+    to { transform:scale(1.08) translateY(-2px); }
+  }
+
+  .envelope-wrap {
+    margin: 28px auto 12px;
+    width: min(92%, 500px);
+    perspective: 900px;
+  }
+  .envelope {
+    position: relative;
+    height: 360px;
+    cursor: pointer;
+    user-select: none;
+    filter: drop-shadow(0 10px 18px rgba(180,65,115,.18));
+  }
+  .env-back {
+    position:absolute;
+    inset:35px 0 0;
+    background:#f7a4c6;
+    border:3px solid #e47eac;
+    border-radius:8px;
+  }
+  .env-back::before,
+  .env-back::after {
+    content:"";
+    position:absolute;
+    bottom:0;
+    width:0;
+    height:0;
+    border-style:solid;
+  }
+  .env-back::before {
+    left:0;
+    border-width:115px 250px 0 0;
+    border-color:#ee91b9 transparent transparent transparent;
+  }
+  .env-back::after {
+    right:0;
+    border-width:0 250px 115px 0;
+    border-color:transparent #e889b3 transparent transparent;
+  }
+  .env-paper {
+    position:absolute;
+    z-index:2;
+    left:5%;
+    width:90%;
+    height:285px;
+    top:55px;
+    background:#fffafc;
+    border:2px solid #efb0ca;
+    border-radius:10px;
+    padding:20px 18px;
+    text-align:left;
+    overflow-y:auto;
+    opacity:0;
+    transform:translateY(25px);
+    pointer-events:none;
+    transition:transform .7s ease, opacity .5s ease;
+    box-shadow:0 4px 12px rgba(170,70,110,.12);
+  }
+  .env-paper .message-title {
+    margin-bottom:8px;
+    font-size:19px;
+  }
+  .env-paper #letter {
+    line-height:1.5;
+    font-size:15px;
+    color:#914363;
+  }
+  .env-flap {
+    position:absolute;
+    z-index:4;
+    left:0;
+    top:35px;
+    width:100%;
+    height:150px;
+    background:#ffb8d4;
+    border:3px solid #e47eac;
+    border-radius:8px 8px 4px 4px;
+    clip-path:polygon(0 0,100% 0,50% 100%);
+    transform-origin:top center;
+    transition:transform .7s ease;
+  }
+  .seal {
+    position:absolute;
+    z-index:5;
+    left:50%;
+    top:150px;
+    transform:translateX(-50%);
+    font-size:30px;
+    transition:opacity .4s ease;
+  }
+  .envelope.open .env-flap {
+    transform:rotateX(180deg);
+  }
+  .envelope.open .seal {
+    opacity:0;
+  }
+  .envelope.open .env-paper {
+    transform:translateY(-45px);
+    opacity:1;
+    pointer-events:auto;
+  }
+  .open-hint {
+    margin-top:4px;
+    font-weight:bold;
+    color:#cf4d86;
+  }
+
+
+  @media (max-width: 480px) {
+    .envelope { height: 390px; }
+    .env-paper { height: 315px; padding: 18px 15px; }
+    .env-flap { height: 145px; }
+    .env-back::before { border-width:145px 50vw 0 0; }
+    .env-back::after { border-width:0 50vw 145px 0; }
+    .message-title { font-size:18px; }
+    .env-paper #letter { font-size:15px; line-height:1.55; }
+  }
+
+</style>
+</head>
+<body>
+<div class="hearts" aria-label="floating celebrations">
+  <span>🎉</span><span>🎉</span><span>🎉</span><span>🎉</span><span>🎉</span><span>🎉</span>
+</div>
+
+<main class="page">
+  <section class="card">
+    <div class="flowers">🌸 🌷 🌸 🌷 🌸</div>
+
+    <div class="teddies">🧸 🧸</div>
+
+    <h1>HAPPY<br>BIRTHDAY!</h1>
+    <div class="subtitle">TO YOU, BOIII! 🎂🎀</div>
+
+    <div class="flowers">🌷 🌸 🌷 🌸 🌷</div>
+
+    <div class="cake-area" aria-label="birthday cake">
+      <div class="candle"></div>
+      <div class="candle"></div>
+      <div class="candle"></div>
+      <div class="flame">🔥</div>
+      <div class="flame">🔥</div>
+      <div class="flame">🔥</div>
+      <div class="cake"></div>
+      <div class="plate"></div>
+    </div>
+
+    <div class="envelope-wrap">
+      <div class="envelope" id="envelope" onclick="openEnvelope()">
+        <div class="env-back"></div>
+        <div class="env-paper">
+          <div class="message-title">A Little Message For You</div>
+          <div id="letter">
+            Happy Birthday Boiii,<br><br>
+            It's almost a year na na magkaibigan tayo kahit sa socmed lang nagkakilala.<br><br>
+            Sayang di ako makapunta, takte prelim kasi eh.. 😭<br><br>
+            Anyway, happy birthday! I wish you the best day ever!<br><br>
+            This is my apology to you kasi di ako makapunta hehe. 🥹<br><br>
+        Always believe on yourself boi, never ever give up on your problems, always remember that there is alway someone out there who believes in you, take care of yourself, don't let others take the lead in your life, and always love yourself for who you are...<br><br>
+        Takte nasabi ko na to lahat eh pero yan lang talaga masasabi ko hahaha.<br><br>
+        Anyway Happy 18th Birthday Again and I hope you enjoy your day!!!
+          </div>
+        </div>
+        <div class="env-flap"></div>
+        <div class="seal">🎀</div>
+      </div>
+      <div class="open-hint" id="openHint">✉️ Tap the envelope to open your message ✉️</div>
+    </div>
+
+    <div class="final">🌸 Have the best birthday ever! 🌸</div>
+    <div class="teddies">🧸🧸</div>
+
+    <button class="button" onclick="restart()">Read the message again </button>
+    <div class="small">Made with pink flowers, teddy bears, and birthday wishes 🌸🧸</div>
+  </section>
+</main>
+
+<script>
+function openEnvelope() {
+  const envelope = document.getElementById("envelope");
+  const hint = document.getElementById("openHint");
+  envelope.classList.toggle("open");
+
+  if (envelope.classList.contains("open")) {
+    hint.textContent = "🌸 Your message is open! 🌸";
+  } else {
+    hint.textContent = "✉️ Tap the envelope to open your message ✉️";
+  }
+}
+</script>
+</body>
+</html>
